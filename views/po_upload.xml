@@ -1,0 +1,85 @@
+<odoo>
+ 
+  <!-- PO Upload Form View -->
+  <record id="view_po_upload_form" model="ir.ui.view">
+    <field name="name">po_upload.upload.form</field>
+    <field name="model">po_upload.upload</field>
+    <field name="arch" type="xml">
+      <form string="PO Upload">
+        <header>
+          <button name="action_validate" type="object" string="Validate"
+                  class="btn-primary" attrs="{'invisible': [('state', '!=', 'new')]}"/>
+          <button name="action_cancel" type="object" string="Cancel"
+                  class="btn-secondary" attrs="{'invisible': [('state', '=', 'cancel')]}"/>
+          <field name="state" widget="statusbar"
+                 statusbar_visible="new,validated,confirm,cancel"/>
+        </header>
+
+        <sheet>
+          <group>
+            <group>
+              <field name="name"/>
+              <field name="po_reference"/>
+            </group>
+            <group>
+              <field name="plm_created_by"/>
+              <field name="plm_create_date"/>
+            </group>
+          </group>
+          <notebook>
+            <page string="PO Lines">
+              <field name="po_lines_ids">
+                <tree editable="bottom"
+                      decoration-danger="is_invalid_sku"
+                      decoration-success="is_valid_sku">
+                  <field name="buyer_order_number"/>
+                  <field name="sku_no"/>
+                  <field name="vendor_code"/>
+                  <field name="customer_id"/>
+                  <field name="vendor_id"/>
+                  <field name="quantity"/>
+                  <field name="order_date"/>
+                  <field name="po_issue_date"/>
+                  <field name="vendor_ex_fact_date"/>
+                  <field name="order_id" optional="hide"/>
+                  <field name="is_invalid_sku" invisible="1"/>
+                  <field name="is_valid_sku" invisible="1"/>
+                </tree>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- PO Upload Tree View -->
+  <record id="po_upload_tree" model="ir.ui.view">
+    <field name="name">po_upload.upload.tree</field>
+    <field name="model">po_upload.upload</field>
+    <field name="arch" type="xml">
+    <tree string="PO Uploads"
+      decoration-danger="has_invalid_sku"
+      decoration-success="has_all_valid_sku">
+        <field name="name"/>
+        <field name="po_reference"/>
+        <field name="plm_created_by"/>
+        <field name="plm_create_date"/>
+        <field name="state" widget='badge' decoration-danger="has_invalid_sku" decoration-success="has_all_valid_sku"/>
+        <field name="has_invalid_sku" invisible="1"/>
+         <field name="has_all_valid_sku" invisible="1"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Action and Menu -->
+  <record id="action_po_upload" model="ir.actions.act_window">
+    <field name="name">PO Upload</field>
+    <field name="res_model">po_upload.upload</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_po_upload_root" name="PO Upload" sequence="10"/>
+  <menuitem id="menu_po_upload" name="PO Uploads"
+            parent="menu_po_upload_root" action="action_po_upload"/>
+</odoo>

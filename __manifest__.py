@@ -1,13 +1,15 @@
 {
-    'name': 'plm_po_upload',
+    'name': 'PLM PO Upload',
     'version': '1.0',
+    'summary': 'Module to import and validate Purchase Orders',
+    'author': 'Akash Sagar',
+    'category': 'Purchases',
     'depends': ['sale_management','product','inspection','contacts'],
     'data': [
         'security/ir.model.access.csv',
-        'views/sale_order_line_views.xml',
-        'views/res_partner_views.xml',
-        'views/sale_order_views.xml',
+        'views/po_upload.xml',
+        'views/po_upload_line_views.xml',
     ],
     'installable': True,
-    'application': False,
+    'application': True,
 }
