@@ -7,6 +7,7 @@
     'depends': ['sale_management','product','inspection','contacts'],
     'images':'plm-po-upload/static/description/download.png',
     'data': [
+        'data/sequence_data.xml',
         'security/ir.model.access.csv',
         'views/po_upload.xml',
         'views/po_upload_line_views.xml',

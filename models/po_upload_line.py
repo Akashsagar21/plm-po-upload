@@ -7,7 +7,7 @@ class PoUploadLine(models.Model):
     upload_id = fields.Many2one('po_upload.upload', string='Upload', ondelete='cascade')
     order_id = fields.Many2one('sale.order', string='SO', readonly=True)
 
-    buyer_order_number = fields.Char(string="Buyer Order Number")
+    buyer_order_number = fields.Char(string="Buyer Order Number",required=True)
     sku_no = fields.Char(string='SKU No', required=True)
     vendor_code = fields.Float(string='Vendor Code')
     quantity = fields.Float(string='Quantity', required=True)

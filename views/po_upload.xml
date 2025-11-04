@@ -7,10 +7,17 @@
     <field name="arch" type="xml">
       <form string="PO Upload">
         <header>
-          <button name="action_validate" type="object" string="Validate"
-                  class="btn-primary" attrs="{'invisible': [('state', '!=', 'new')]}"/>
-          <button name="action_cancel" type="object" string="Cancel"
-                  class="btn-secondary" attrs="{'invisible': [('state', '=', 'cancel')]}"/>
+         <!-- Validate button: visible only when state is 'new' -->
+  <button name="action_validate" type="object" string="Validate"
+          class="btn-primary" attrs="{'invisible': [('state', '!=', 'new')]}"/>
+  
+  <!-- Cancel button: visible when state is 'new' or 'validated' -->
+  <button name="action_cancel" type="object" string="Cancel"
+          class="btn-secondary" attrs="{'invisible': [('state', 'not in', ['new', 'validated'])]}"/>
+  
+  <!-- Confirm button: visible when state is 'new' or 'validated' -->
+  <button name="action_confirm" type="object" string="Confirm"
+          class="btn-secondary" attrs="{'invisible': [('state', 'not in', ['new', 'validated'])]}"/>
           <field name="state" widget="statusbar"
                  statusbar_visible="new,validated,confirm,cancel"/>
         </header>
@@ -79,7 +86,7 @@
     <field name="view_mode">tree,form</field>
   </record>
 
-  <menuitem id="menu_po_upload_root" name="PO Upload" web_icon="plm-po-upload,static/description/download.png" sequence="10"/>
+  <menuitem id="menu_po_upload_root" name="PO Upload" web_icon="plm-po-upload,static/description/download.png" sequence="14"/>
   <menuitem id="menu_po_upload" name="PO Uploads"
             parent="menu_po_upload_root" action="action_po_upload"/>
 </odoo>

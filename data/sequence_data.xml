@@ -1,0 +1,11 @@
+<odoo>
+    <data noupdate="1">
+        <record id="seq_po_upload_number" model="ir.sequence">
+            <field name="name">PO Upload Number</field>
+            <field name="code">po_upload.upload</field>
+            <field name="prefix">PO/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>
