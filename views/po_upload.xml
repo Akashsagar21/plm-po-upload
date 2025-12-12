@@ -86,7 +86,7 @@
     <field name="view_mode">tree,form</field>
   </record>
 
-  <menuitem id="menu_po_upload_root" name="PO Upload" web_icon="plm-po-upload,static/description/download.png" sequence="14"/>
+  <menuitem id="menu_po_upload_root" name="PO Upload" web_icon="plm-po-upload-main,static/description/download.png" sequence="14"/>
   <menuitem id="menu_po_upload" name="PO Uploads"
             parent="menu_po_upload_root" action="action_po_upload"/>
 </odoo>
