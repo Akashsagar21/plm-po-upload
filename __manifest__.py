@@ -5,7 +5,7 @@
     'author': 'Akash Sagar',
     'category': 'Purchases',
     'depends': ['sale_management','product','inspection','contacts'],
-    'images':'plm-po-upload/static/description/download.png',
+    'images':'plm-po-upload-main/static/description/download.png',
     'data': [
         'data/sequence_data.xml',
         'security/ir.model.access.csv',
